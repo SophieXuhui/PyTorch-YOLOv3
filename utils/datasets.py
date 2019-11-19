@@ -141,6 +141,7 @@ class ListDataset(Dataset):
                 continue
             boxes[:, 0] = i
         # targets = torch.cat(targets, 0)
+        targets = [boxes for boxes in targets if boxes is not None]
         try:
             targets = torch.cat(targets, 0)
         except RuntimeError as e_inst:
